@@ -55,4 +55,10 @@ public class PauseManager : MonoBehaviour
 
         Time.timeScale = previousTimeScale;
     }
+
+    public void Quit()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
