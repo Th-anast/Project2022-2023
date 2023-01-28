@@ -26,12 +26,16 @@ public class PauseManager : MonoBehaviour
         {
             if (!onPause)
             {
-                Pause();
+                Pause();                
             }
             else
             {
                 Unpause();
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Delete) && onPause)
+        {
+            Debug.Log("Quit");
         }
     }
 
@@ -43,7 +47,7 @@ public class PauseManager : MonoBehaviour
         cinemachineBrain.enabled = !onPause;
 
         previousTimeScale = Time.timeScale;
-        Time.timeScale = 0f;
+        Time.timeScale = 0f;        
     }
 
     void Unpause()
