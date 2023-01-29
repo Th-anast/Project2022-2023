@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEditor;
+using Unity.VisualScripting;
 
 public class PauseManager : MonoBehaviour
 {
@@ -43,20 +45,16 @@ public class PauseManager : MonoBehaviour
     {
         onPause = true;
         pauseScreen.SetActive(onPause);
-
         cinemachineBrain.enabled = !onPause;
-
         previousTimeScale = Time.timeScale;
-        Time.timeScale = 0f;        
+        Time.timeScale = 0f;
     }
 
     void Unpause()
     {
         onPause = false;
         pauseScreen.SetActive(onPause);
-
         cinemachineBrain.enabled = !onPause;
-
         Time.timeScale = previousTimeScale;
     }
 
