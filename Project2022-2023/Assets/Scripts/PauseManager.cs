@@ -11,12 +11,13 @@ public class PauseManager : MonoBehaviour
     public CinemachineBrain cinemachineBrain;
     public static bool onPause;
     float previousTimeScale;
+    //AudioSource[] audios;
 
     // Start is called before the first frame update
     void Start()
     {
+        //audios = FindObjectsOfType<AudioSource>();
         previousTimeScale = Time.timeScale;
-
         onPause = false;
         pauseScreen.SetActive(false);
     }
@@ -47,6 +48,10 @@ public class PauseManager : MonoBehaviour
         pauseScreen.SetActive(onPause);
         cinemachineBrain.enabled = !onPause;
         previousTimeScale = Time.timeScale;
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios) {
+            a.Pause();
+        }
         Time.timeScale = 0f;
     }
 
@@ -54,7 +59,11 @@ public class PauseManager : MonoBehaviour
     {
         onPause = false;
         pauseScreen.SetActive(onPause);
-        cinemachineBrain.enabled = !onPause;
+        cinemachineBrain.enabled = !onPause;        
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios) {
+            a.UnPause();
+        }
         Time.timeScale = previousTimeScale;
     }
 
