@@ -11,12 +11,10 @@ public class PauseManager : MonoBehaviour
     public CinemachineBrain cinemachineBrain;
     public static bool onPause;
     float previousTimeScale;
-    //AudioSource[] audios;
 
     // Start is called before the first frame update
     void Start()
     {
-        //audios = FindObjectsOfType<AudioSource>();
         previousTimeScale = Time.timeScale;
         onPause = false;
         pauseScreen.SetActive(false);
@@ -39,6 +37,7 @@ public class PauseManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Delete) && onPause)
         {
             Debug.Log("Quit");
+            Application.Quit();
         }
     }
 
@@ -65,11 +64,5 @@ public class PauseManager : MonoBehaviour
             a.UnPause();
         }
         Time.timeScale = previousTimeScale;
-    }
-
-    public void Quit()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
     }
 }
